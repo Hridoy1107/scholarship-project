@@ -112,7 +112,7 @@ const Login = () => {
                 <div className="py-2 mt-8 rounded-xl flex">
                     <div className="mx-auto w-full lg:w-1/2 my-4 rounded-xl bg-base-200">
                         <h2 className="text-3xl lg:text-4xl mb-4 text-center font-semibold text-cyan-700">Please Login</h2>
-                        <p className="font-medium mb-2 mx-2">Please log in to access your account and continue your culinary journey with us.</p>
+                        <p className="font-medium mb-2 px-2 mx-2">Enter Your Credentials to Access Your Personalized Scholarship Profile, Manage Submissions, Track Progress, and Connect with Advisors.</p>
                         <form onSubmit={handleLogin}>
                             <div className="mx-2">
                                 <label className="label">

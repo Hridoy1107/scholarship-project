@@ -5,6 +5,7 @@ import { FreeMode, Autoplay } from 'swiper/modules';
 import bg1 from '../assets/du.webp';
 import bg2 from '../assets/RU.webp';
 import bg3 from '../assets/agre.jpg';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -49,9 +50,9 @@ const Banner = () => {
                                         </h1>
                                     </div>
                                     <div>
-                                        <a className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -82,9 +83,9 @@ const Banner = () => {
                                         </h1>
                                     </div>
                                     <div>
-                                        <a className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +116,9 @@ const Banner = () => {
                                         </h1>
                                     </div>
                                     <div>
-                                        <a className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

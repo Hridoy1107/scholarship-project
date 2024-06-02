@@ -2,11 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import img from "../assets/university.png"
 import sun from '../assets/sun.png';
 import moon from '../assets/full-moon.png';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Header = () => {
+
+    const location = useLocation();
+    
+    const isActive = location.pathname.startsWith("/dashboard");
 
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem('theme') || 'light';
@@ -72,13 +76,11 @@ const Header = () => {
                 }}
                 className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> All Scholarships </NavLink>
 
-            <NavLink to="/all"
-                style={({ isActive }) => {
-                    return {
-                        background: isActive ? "black" : "transparent",
-                        color: isActive ? "white" : "black",
-                    };
-                }}
+            <NavLink to="/dashboard/i"
+                 style={{
+                     background: isActive ? "black" : "transparent",
+                     color: isActive ? "white" : "black",
+                 }}
                 className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Dashboard </NavLink>
 
         </>

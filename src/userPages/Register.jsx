@@ -144,7 +144,7 @@ const Register = () => {
                 <div className="py-2 mt-8 rounded-xl flex">
                     <div className="mx-auto w-full lg:w-1/2 my-4 rounded-xl bg-base-200">
                         <h2 className="text-3xl lg:text-4xl mb-4 text-center font-semibold text-cyan-700">Please Register</h2>
-                        <p className="font-medium mb-2 mx-2">Join our culinary community! Create an account to unlock exclusive perks, personalized recommendations, and to stay updated with the latest culinary delights. Sign up now and embark on a delicious adventure!</p>
+                        <p className="font-medium mb-2 px-2 mx-2">Join Our Scholarship Community Today to Explore, Apply, and Stay Informed About the Latest Scholarship Opportunities!</p>
                         <form onSubmit={handleRegister}>
                             <div className="mx-2">
                                 <label className="label">
