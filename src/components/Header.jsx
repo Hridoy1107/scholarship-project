@@ -64,7 +64,7 @@ const Header = () => {
         </>
     const linksEnd =
         <>
-            <NavLink to="/"
+            <NavLink to="/login"
                 style={({ isActive }) => {
                     return {
                         background: isActive ? "black" : "transparent",
@@ -73,7 +73,7 @@ const Header = () => {
                 }}
                 className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"> Log in </NavLink>
 
-            <NavLink to="/"
+            <NavLink to="/register"
                 style={({ isActive }) => {
                     return {
                         background: isActive ? "black" : "transparent",
