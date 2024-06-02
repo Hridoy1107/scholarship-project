@@ -42,7 +42,7 @@ const Header = () => {
                         color: isActive ? "white" : "black",
                     };
                 }}
-                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Solutions </NavLink>
+                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> All Scholarships </NavLink>
 
             <NavLink to="/all"
                 style={({ isActive }) => {
@@ -51,16 +51,16 @@ const Header = () => {
                         color: isActive ? "white" : "black",
                     };
                 }}
-                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Resources </NavLink>
+                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Dashboard </NavLink>
 
-            <NavLink to="/all"
+            {/* <NavLink to="/all"
                 style={({ isActive }) => {
                     return {
                         background: isActive ? "black" : "transparent",
                         color: isActive ? "white" : "black",
                     };
                 }}
-                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Pricing </NavLink>
+                className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> Pricing </NavLink> */}
         </>
     const linksEnd =
         <>
@@ -87,7 +87,7 @@ const Header = () => {
             <div className="bg-gradient-to-b from-green-200 to-green-400 rounded-xl">
                 <div className="px-4 mx-auto sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 lg:h-20">
-                        <div className="dropdown">
+                        <div className="dropdown" style={{ position: 'relative', zIndex: 1000 }}>
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </div>

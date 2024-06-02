@@ -9,7 +9,7 @@ const Footer = () => {
                         <div className="mb-6 lg:px-0 px-[100px] md:mb-0">
                             <a className="flex items-center">
                                 <img src={img} className="h-8 me-3" alt="FlowBite Logo" />
-                                <span className="self-center text-2xl font-semibold whitespace-nowrap">Uni Aid</span>
+                                <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">Uni Aid</span>
                             </a>
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
