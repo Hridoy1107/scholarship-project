@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import Swal from 'sweetalert2'
-import axios from "axios";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -23,8 +22,6 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result.user)
-                const user = {email};
-                axios.post('/jwt' , user, {withCredentials: true})
                 .then(res => {
                     console.log(res.data);
                     if(res.data.success){
@@ -49,9 +46,6 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
-                const email = result.user.email;
-                const user = {email};
-                axios.post('/jwt' , user, {withCredentials: true})
                 .then(res => {
                     console.log(res.data);
                     if(res.data.success){
@@ -74,9 +68,6 @@ const Login = () => {
         facebookLogin()
             .then(result => {
                 console.log(result.user)
-                const email = result.user.email;
-                const user = {email};
-                axios.post('/jwt' , user)
                 .then(res => {
                     console.log(res.data);
                     if(res.data.success){
@@ -99,9 +90,6 @@ const Login = () => {
         githubLogin()
             .then(result => {
                 console.log(result.user)
-                const email = result.user.email;
-                const user = {email};
-                axios.post('/jwt' , user,)
                 .then(res => {
                     console.log(res.data);
                     if(res.data.success){
