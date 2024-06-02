@@ -25,7 +25,6 @@ const Banner = () => {
                         modules={[FreeMode, Autoplay]}>
                         <SwiperSlide>
                             <div
-                                className="parallax-bg"
                                 style={{
                                     backgroundImage: `url(${bg1})`,
                                     backgroundSize: 'cover',
@@ -59,7 +58,6 @@ const Banner = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div
-                                className="parallax-bg"
                                 style={{
                                     backgroundImage: `url(${bg2})`,
                                     backgroundSize: 'cover',
@@ -93,7 +91,6 @@ const Banner = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <div
-                                className="parallax-bg"
                                 style={{
                                     backgroundImage: `url(${bg3})`,
                                     backgroundSize: 'cover',

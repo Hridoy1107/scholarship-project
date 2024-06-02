@@ -18,17 +18,12 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-
         signInUser(email, password)
             .then(result => {
                 console.log(result.user)
-                .then(res => {
-                    console.log(res.data);
-                    if(res.data.success){
-                        navigate(from, { replace: true });
-                    }
-                })
                 e.target.reset();
+                navigate(from, { replace: true });
+
                 Swal.fire({
                     title: 'Success!',
                     text: 'User Login Successfully',
@@ -46,12 +41,8 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
-                .then(res => {
-                    console.log(res.data);
-                    if(res.data.success){
-                        navigate(from, { replace: true });
-                    }
-                })
+                navigate(from, { replace: true });
+
                 Swal.fire({
                     title: 'Success!',
                     text: 'User Login Successfully',
@@ -68,12 +59,8 @@ const Login = () => {
         facebookLogin()
             .then(result => {
                 console.log(result.user)
-                .then(res => {
-                    console.log(res.data);
-                    if(res.data.success){
-                        navigate(from, { replace: true });
-                    }
-                })
+                navigate(from, { replace: true });
+
                 Swal.fire({
                     title: 'Success!',
                     text: 'User Login Successfully',
@@ -90,12 +77,8 @@ const Login = () => {
         githubLogin()
             .then(result => {
                 console.log(result.user)
-                .then(res => {
-                    console.log(res.data);
-                    if(res.data.success){
-                        navigate(from, { replace: true });
-                    }
-                })
+                navigate(from, { replace: true });
+                
                 Swal.fire({
                     title: 'Success!',
                     text: 'User Login Successfully',
