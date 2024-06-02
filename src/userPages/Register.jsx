@@ -7,6 +7,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import axios from "axios";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Register = () => {
     const [registerError, setRegisterError] = useState('');
@@ -15,12 +19,13 @@ const Register = () => {
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
-    const handleRegister = e => {
+    const handleRegister = async e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const photo = e.target.photo.value;
+        const photoFile = e.target.elements.photo.files[0];
+        console.log(photoFile);
 
 
         setRegisterError('');
@@ -35,32 +40,41 @@ const Register = () => {
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                console.log(result.user);
-                const user = {email, name};
-                axiosPublic.post('/users', user)
-                navigate('/');
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'User Registered Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
+        const formData = new FormData();
+        formData.append('image', photoFile);
 
-                updateProfile(result.user, {
-                    displayName: name,
-                    photoURL: photo,
-                })
-                    .then(() => console.log('Profile updated'))
-                    .catch()
+        try {
+            const uploadRes = await axios.post(image_hosting_api, formData);
+            const photoURL = uploadRes.data.data.display_url;
 
-            })
-            .catch(error => {
-                console.error(error);
-                setRegisterError(error.message);
-            })
-    }
+            // Create user with email and password
+            const result = await createUserWithEmailAndPassword(auth, email, password);
+            const user = result.user;
+            console.log(user);
+
+            // Update user profile with the photo URL
+            await updateProfile(user, {
+                displayName: name,
+                photoURL: photoURL,
+            });
+
+            // Save the user in your database
+            const userData = { email, name };
+            await axiosPublic.post('/users', userData);
+
+            navigate('/');
+            Swal.fire({
+                title: 'Success!',
+                text: 'User Registered Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool',
+            });
+        } catch (error) {
+            console.error(error);
+            setRegisterError(error.message);
+        }
+    };
+
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
@@ -148,7 +162,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text font-medium">User Photo</span>
                                 </label>
-                                <input className="mb-4 w-full rounded-xl py-2 px-4" type="text" required id="Photo" name="photo" placeholder="Photo URL" />
+                                <input className="mb-4 w-full rounded-xl py-2 px-4" type="file" name="photo" required id="Photo" />
                             </div>
                             <div className="mb-4 mx-2 relative border-none">
                                 <label className="label">

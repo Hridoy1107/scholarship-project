@@ -4,12 +4,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signInUser, signInWithGoogle, facebookLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
     console.log(location);
     const from = location.state?.from?.pathname || '/';
 
@@ -41,6 +43,10 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
+                const email = result.user.email;
+                const name = result.user.displayName;
+                const user = {email, name};
+                axiosPublic.post('/users', user)
                 navigate(from, { replace: true });
 
                 Swal.fire({
@@ -59,6 +65,10 @@ const Login = () => {
         facebookLogin()
             .then(result => {
                 console.log(result.user)
+                const email = result.user.email;
+                const name = result.user.displayName;
+                const user = {email, name};
+                axiosPublic.post('/users', user)
                 navigate(from, { replace: true });
 
                 Swal.fire({
@@ -77,6 +87,10 @@ const Login = () => {
         githubLogin()
             .then(result => {
                 console.log(result.user)
+                const email = result.user.email;
+                const name = result.user.displayName;
+                const user = {email, name};
+                axiosPublic.post('/users', user)
                 navigate(from, { replace: true });
                 
                 Swal.fire({
