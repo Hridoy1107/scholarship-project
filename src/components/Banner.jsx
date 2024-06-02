@@ -40,7 +40,7 @@ const Banner = () => {
                                 data-swiper-parallax="-23%"
                             ></div>
                             <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10">
+                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
                                     <div>
                                         <h1 className="text-black font-medium lg:text-4xl text-2xl">Achieve Your Dreams</h1>
                                     </div>
@@ -74,7 +74,7 @@ const Banner = () => {
                                 data-swiper-parallax="-23%"
                             ></div>
                             <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10">
+                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
                                     <div>
                                         <h1 className="text-black font-medium lg:text-4xl text-2xl">Unlock Your Potential</h1>
                                     </div>
@@ -108,7 +108,7 @@ const Banner = () => {
                                 data-swiper-parallax="-23%"
                             ></div>
                             <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10">
+                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
                                     <div>
                                         <h1 className="text-black font-medium lg:text-4xl text-2xl">Invest in Your Future</h1>
                                     </div>
