@@ -11,6 +11,7 @@ import Profile from "../DashPages/Profile";
 import AddScholarship from "../DashPages/AddScholarship";
 import DashAllScholarships from "../DashPages/DashAllScholarships";
 import EditScholarships from "../DashPages/EditScholarships";
+import AllScholarships from "../privatePages/AllScholarships";
 
 const Routes = createBrowserRouter([
     {
@@ -23,8 +24,12 @@ const Routes = createBrowserRouter([
                 element: <Home></Home> ,
             },
             {
-                path: '/all',
-                element: <h1 className="text-red-500">Hi to all</h1> ,
+                path: '/all-scholarships',
+                element: <PrivateRoute><AllScholarships></AllScholarships></PrivateRoute> ,
+            },
+            {
+                path: '/details/:id',
+                element: <PrivateRoute></PrivateRoute> ,
             },
             {
                 path: '/login',

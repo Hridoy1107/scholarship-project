@@ -67,7 +67,7 @@ const Header = () => {
                 }}
                 className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200">Home</NavLink>
 
-            <NavLink to="/all"
+            <NavLink to="/all-scholarships"
                 style={({ isActive }) => {
                     return {
                         background: isActive ? "black" : "transparent",
