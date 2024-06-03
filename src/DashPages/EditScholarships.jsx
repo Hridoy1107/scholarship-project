@@ -2,44 +2,73 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const EditScholarships = () => {
 
+    const axiosPublic = useAxiosPublic();
+
     const { user } = useContext(AuthContext);
     const scholarships = useLoaderData();
-    const { _id, scholarshipName, universityName, country, city, rank,  applicationFees, serviceCharges, description } = scholarships
+    const { _id, scholarshipName, universityName, country, city, rank,  applicationFees, degreeCategory, serviceCharges, deadlineDate, description } = scholarships
 
 
-    const handleEditData = event => {
+    const handleEditData = async (event) => {
         event.preventDefault();
 
         const form = event.target;
 
-        const dishName = form.dishName.value;
-        const url = form.url.value;
-        const category = form.category.value;
-        const quantity = parseFloat(form.quantity.value);
-        const price = parseFloat(form.price.value);
+        const scholarshipName = form.scholarshipName.value;
+        const universityName = form.universityName.value;
+        const photoFile = event.target.elements.photo.files[0];
         const country = form.country.value;
+        const city = form.city.value;
+        const rank = parseFloat(form.rank.value);
+        const subjectCategory = form.subjectCategory.value;
+        const scholarshipCategory = form.scholarshipCategory.value;
+        const degreeCategory = form.degreeCategory.value;
+        const tuitionFees = form.tuitionFees.value;
+        const applicationFees = parseFloat(form.applicationFees.value);
+        const serviceCharges = parseFloat(form.serviceCharges.value);
+        const deadlineDate = form.deadlineDate.value;
+        const postDate = form.postDate.value;
+
         const userName = form.userName.value;
         const email = form.email.value;
         const description = form.description.value;
 
-        const editedScholarships = { dishName, url, category, quantity, price, country, userName, email, description  }
+        let photoURL = '';
+
+        if (photoFile) {
+            const formData = new FormData();
+            formData.append('image', photoFile);
+
+            try {
+                const uploadRes = await axios.post(image_hosting_api, formData);
+                photoURL = uploadRes.data.data.display_url;
+            } catch (error) {
+                console.error("Error uploading image to imgBB:", error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to upload image',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+        }
+
+        const editedScholarships = { scholarshipName, universityName,  country, city, photoURL, rank, subjectCategory, scholarshipCategory, degreeCategory, tuitionFees, applicationFees, serviceCharges, deadlineDate, postDate, userName, email, description  }
 
 
-        fetch(` https://restaurant-server-theta.vercel.app/foods/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(editedScholarships)
-        })
-            .then(res => res.json())
+        axiosPublic.put( `/scholarships/${_id}`, editedScholarships)
             .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+                console.log(data.data);
+                if (data.data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Scholarship Edited Successfully',
@@ -132,6 +161,7 @@ const EditScholarships = () => {
                             <select
                                 name="scholarshipCategory"
                                 className="border p-2 rounded-md"
+                                
                             >
                                 <option value="Full Fund">Full Fund</option>
                                 <option value="Partial">Partial</option>
@@ -147,6 +177,7 @@ const EditScholarships = () => {
                             <select
                                 name="degreeCategory"
                                 className="border p-2 rounded-md"
+                                defaultValue={degreeCategory}
                             >
                                 <option value="Diploma">Diploma</option>
                                 <option value="Bachelor">Bachelor</option>
@@ -190,7 +221,7 @@ const EditScholarships = () => {
                             </label>
                             <label className="input-group">
                                 <input type="date" name="deadlineDate"
-                                    className="input input-bordered w-full" min={new Date().toISOString().split("T")[0]} required  />
+                                    className="input input-bordered w-full" min={new Date().toISOString().split("T")[0]} required defaultValue={deadlineDate} />
                             </label>
                         </div>
                         <div className="form-control lg:w-1/2 lg:ml-4">
@@ -229,8 +260,9 @@ const EditScholarships = () => {
                     <textarea
                         className="block w-full px-4 py-2 mt-2 border rounded-md"
                         type="text" name="description" placeholder="Description"
+                        defaultValue={description}
                     ></textarea>
-                    <input defaultValue={description} type="submit" value="Add Scholarship" className="btn btn-primary btn-block mt-4" />
+                    <input type="submit" value="Edit Scholarship" className="btn btn-primary btn-block mt-4" />
                 </form>
             </div>
         </>
