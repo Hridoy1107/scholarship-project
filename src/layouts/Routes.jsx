@@ -10,6 +10,7 @@ import UsersPage from "../DashPages/UsersPage";
 import Profile from "../DashPages/Profile";
 import AddScholarship from "../DashPages/AddScholarship";
 import DashAllScholarships from "../DashPages/DashAllScholarships";
+import EditScholarships from "../DashPages/EditScholarships";
 
 const Routes = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ const Routes = createBrowserRouter([
             {
                 path: 'dash-all-scholarships',
                 element: <DashAllScholarships></DashAllScholarships> ,
+            },
+            {
+                path: 'dash-all-scholarships/edit-scholarships/:id',
+                element: <EditScholarships></EditScholarships> ,
+                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
             },
         ]
     }

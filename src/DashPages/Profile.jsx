@@ -19,8 +19,8 @@ const Profile = () => {
     return (
         <>
             <div className="my-6 lg:ml-80">
-                <div className="avatar">
-                    <div className="w-60 rounded-full">
+                <div>
+                    <div className="w-60">
                         <img src={user.photoURL} />
                     </div>
                 </div>

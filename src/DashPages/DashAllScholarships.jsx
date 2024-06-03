@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const DashAllScholarships = () => {
 
     const axiosPublic = useAxiosPublic();
-    const { data: scholarships = [], refetch} = useQuery({
+    const { data: scholarships = [], refetch, isLoading} = useQuery({
         queryKey: ['scholarships'],
         queryFn: async () => {
             const res = await axiosPublic.get('/scholarships');
@@ -40,6 +40,11 @@ const DashAllScholarships = () => {
             }
         })
     }
+    if (isLoading) {
+        return (
+            <span className="loading loading-spinner loading-lg"></span>
+        );
+    }
 
     return (
         <>
@@ -60,7 +65,7 @@ const DashAllScholarships = () => {
                                         </div>
                                         <div className="mt-4">
                                             <div className="lg:flex lg:justify-around">
-                                                <Link to={`/edit/${scholarship._id}`} className="bg-yellow-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-yellow-600 active:scale-95">Edit</Link>
+                                                <Link to={`edit-scholarships/${scholarship._id}`}className="bg-yellow-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-yellow-600 active:scale-95">Edit</Link>
                                                 <a onClick={() => handleDelete(scholarship)} className="bg-red-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-red-600 active:scale-95">Delete</a>
                                             </div>
                                         </div>
