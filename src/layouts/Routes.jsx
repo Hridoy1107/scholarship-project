@@ -6,6 +6,9 @@ import Home from "../mainPages/Home";
 import Login from "../userPages/Login";
 import Register from "../userPages/Register";
 import Dashboard from "../privatePages/Dashboard";
+import UsersPage from "../DashPages/UsersPage";
+import Profile from "../DashPages/Profile";
+import AddScholarship from "../DashPages/AddScholarship";
 
 const Routes = createBrowserRouter([
     {
@@ -38,11 +41,15 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: 'i',
-                element: <h1 className="text-8xl">Hello to I</h1> ,
+                element: <Profile></Profile> ,
             },
             {
                 path: 'j',
-                element: <h1 className="text-8xl">Hello to J</h1> ,
+                element: <AddScholarship></AddScholarship> ,
+            },
+            {
+                path: 'users',
+                element: <UsersPage></UsersPage> ,
             },
         ]
     }
