@@ -40,11 +40,11 @@ const Routes = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path: 'i',
+                path: 'profile',
                 element: <Profile></Profile> ,
             },
             {
-                path: 'j',
+                path: 'add-scholarship',
                 element: <AddScholarship></AddScholarship> ,
             },
             {

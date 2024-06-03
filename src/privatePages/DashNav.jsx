@@ -21,13 +21,13 @@ const SideNav = () => {
         </div>
         <nav className="hidden p-4 lg:flex flex-col items-center gap-2">
 
-            <Link to="i" >
+            <Link to="profile" >
                 <NavItem selected={selected === 0} id={0} setSelected={setSelected}>
                     <h1 className="text-white">Profile</h1>
                 </NavItem>
             </Link>
 
-            <Link to="j" >
+            <Link to="add-scholarship" >
                 <NavItem selected={selected === 1} id={1} setSelected={setSelected}>
                     <h1 className="text-white">Add Scholarship</h1>
                 </NavItem>
