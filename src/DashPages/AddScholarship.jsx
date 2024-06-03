@@ -21,7 +21,7 @@ const AddScholarship = () => {
 
         const scholarshipName = form.scholarshipName.value;
         const universityName = form.universityName.value;
-        const photoFile = event.target.elements.photo.files[0]
+        const photoFile = event.target.elements.photo.files[0];
         const country = form.country.value;
         const city = form.city.value;
         const rank = parseFloat(form.rank.value);

@@ -9,6 +9,7 @@ import Dashboard from "../privatePages/Dashboard";
 import UsersPage from "../DashPages/UsersPage";
 import Profile from "../DashPages/Profile";
 import AddScholarship from "../DashPages/AddScholarship";
+import DashAllScholarships from "../DashPages/DashAllScholarships";
 
 const Routes = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'users',
                 element: <UsersPage></UsersPage> ,
+            },
+            {
+                path: 'dash-all-scholarships',
+                element: <DashAllScholarships></DashAllScholarships> ,
             },
         ]
     }

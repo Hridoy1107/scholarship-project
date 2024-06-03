@@ -35,9 +35,11 @@ const SideNav = () => {
             <NavItem selected={selected === 2} id={2} setSelected={setSelected}>
             <h1 className="text-white">Applications</h1>
             </NavItem>
+            <Link to="dash-all-scholarships">
             <NavItem selected={selected === 3} id={3} setSelected={setSelected}>
-            <h1 className="text-white">All Scholarship</h1>
+            <h1 className="text-white">All Scholarships</h1>
             </NavItem>
+            </Link>
             <NavItem selected={selected === 4} id={4} setSelected={setSelected}>
             <h1 className="text-white">Reviews</h1>
             </NavItem>
