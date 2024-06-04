@@ -64,7 +64,7 @@ const DashAllScholarships = () => {
 
     return (
         <>
-        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All Scholarships to manage</h1>
+        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All scholarships to manage</h1>
             <div className="grid my-6 lg:grid-cols-3 gap-4">
                 {
                     currentItems.map((scholarship) => (

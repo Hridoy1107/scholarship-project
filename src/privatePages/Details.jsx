@@ -81,7 +81,7 @@ const Details = () => {
                             {description}
                         </p>
                     </div>
-                    <div className="relative my-2 z-10 flex flex-col items-center">
+                    <div className="relative mt-3 z-10 flex flex-col items-center">
                         <Link to={`/apply-page/${_id}`} >
                             <motion.button
                                 style={{

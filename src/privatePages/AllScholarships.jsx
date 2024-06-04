@@ -37,7 +37,7 @@ const AllScholarships = () => {
 
     return (
         <>
-        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All Scholarship options we have for you</h1>
+        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All scholarship options we have for you</h1>
             <div className="grid my-6 lg:grid-cols-3 gap-4">
                 {
                     currentItems.map((scholarship) => (

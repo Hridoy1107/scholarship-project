@@ -13,6 +13,7 @@ import DashAllScholarships from "../DashPages/DashAllScholarships";
 import EditScholarships from "../DashPages/EditScholarships";
 import AllScholarships from "../privatePages/AllScholarships";
 import Details from "../privatePages/Details";
+import ApplyPage from "../privatePages/ApplyPage";
 
 const Routes = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ const Routes = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute> ,
+                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+            },
+            {
+                path: '/apply-page/:id',
+                element: <PrivateRoute><ApplyPage></ApplyPage></PrivateRoute> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
             },
             {

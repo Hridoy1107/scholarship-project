@@ -103,7 +103,7 @@ const UsersPage = () => {
     const [filter, setFilter] = useState('all');
     const filteredUsers = users.filter(user => {
         if (filter === 'all') return true;
-        if (filter === 'user') return !user.role || user.role === 'user'; // Show users with no role or role 'user'
+        if (filter === 'user') return !user.role || user.role === 'user';
         return user.role === filter;
     });
 
@@ -115,7 +115,7 @@ const UsersPage = () => {
 
     return (
         <div>
-            <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All Users to manage</h1>
+            <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All users to manage</h1>
             <div className="lg:flex lg:justify-evenly lg:px-80 my-4 gap-2">
                 <button onClick={() => setFilter('user')} className="btn btn-accent">Show Only Users</button>
                 <button onClick={() => setFilter('admin')} className="btn btn-primary">Show Only Admins</button>
