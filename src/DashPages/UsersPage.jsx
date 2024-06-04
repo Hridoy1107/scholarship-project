@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const UsersPage = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosPublic.get('/users');
@@ -107,16 +107,22 @@ const UsersPage = () => {
         return user.role === filter;
     });
 
+    if (isLoading) {
+        return (
+            <div className="my-4"><span className="loading loading-spinner loading-lg"></span></div>
+        );
+    }
+
     return (
         <div>
-            <div className="flex justify-evenly my-4 gap-2">
+            <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All Users to manage</h1>
+            <div className="lg:flex lg:justify-evenly lg:px-80 my-4 gap-2">
                 <button onClick={() => setFilter('user')} className="btn btn-accent">Show Only Users</button>
                 <button onClick={() => setFilter('admin')} className="btn btn-primary">Show Only Admins</button>
                 <button onClick={() => setFilter('moderator')} className="btn btn-success">Show Only Moderators</button>
                 <button onClick={() => setFilter('all')} className="btn btn-secondary">Show All</button>
             </div>
             <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All Users</h2>
                 <h2 className="text-3xl">Total Users: {filteredUsers.length}</h2>
             </div>
             <div className="overflow-x-auto">

@@ -31,12 +31,13 @@ const AllScholarships = () => {
 
     if (isLoading) {
         return (
-            <span className="loading loading-spinner loading-lg"></span>
+            <div className="my-4"><span className="loading loading-spinner loading-lg"></span></div>
         );
     }
 
     return (
         <>
+        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All Scholarship options we have for you</h1>
             <div className="grid my-6 lg:grid-cols-3 gap-4">
                 {
                     currentItems.map((scholarship) => (

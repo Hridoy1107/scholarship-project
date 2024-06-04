@@ -18,6 +18,7 @@ const Profile = () => {
 
     return (
         <>
+        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">Profile Page</h1>
             <div className="mt-10">
                 <div className="avatar">
                     <div className="w-60 rounded-full">

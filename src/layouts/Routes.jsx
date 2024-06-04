@@ -26,7 +26,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: '/all-scholarships',
-                element: <PrivateRoute><AllScholarships></AllScholarships></PrivateRoute> ,
+                element: <AllScholarships></AllScholarships>,
             },
             {
                 path: '/details/:id',
@@ -65,7 +65,7 @@ const Routes = createBrowserRouter([
                 element: <DashAllScholarships></DashAllScholarships> ,
             },
             {
-                path: 'dash-all-scholarships/edit-scholarships/:id',
+                path: 'all-scholarships/edit-scholarships/:id',
                 element: <EditScholarships></EditScholarships> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
             },

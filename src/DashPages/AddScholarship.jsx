@@ -81,7 +81,7 @@ const AddScholarship = () => {
     return (
         <>
             <div className="bg-slate-100 py-8 lg:px-24 px-2 w-full rounded-2xl">
-                <h2 className="mb-6 text-3xl font-bold text-teal-700">Add Scholarship</h2>
+                <h2 className="mb-6 text-3xl font-bold text-teal-700">Add a Scholarship</h2>
                 <form onSubmit={handleAddData}>
                     <div className="lg:flex mb-2">
                         <div className="form-control lg:w-1/2">
