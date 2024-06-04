@@ -14,6 +14,7 @@ import EditScholarships from "../DashPages/EditScholarships";
 import AllScholarships from "../privatePages/AllScholarships";
 import Details from "../privatePages/Details";
 import ApplyPage from "../privatePages/ApplyPage";
+import Payment from "../payment/Payment";
 
 const Routes = createBrowserRouter([
     {
@@ -37,6 +38,11 @@ const Routes = createBrowserRouter([
             {
                 path: '/apply-page/:id',
                 element: <PrivateRoute><ApplyPage></ApplyPage></PrivateRoute> ,
+                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+            },
+            {
+                path: '/payment/:id',
+                element: <PrivateRoute><Payment></Payment> </PrivateRoute> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
             },
             {
