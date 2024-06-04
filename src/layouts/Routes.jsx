@@ -61,7 +61,7 @@ const Routes = createBrowserRouter([
                 element: <UsersPage></UsersPage> ,
             },
             {
-                path: 'dash-all-scholarships',
+                path: 'all-scholarships',
                 element: <DashAllScholarships></DashAllScholarships> ,
             },
             {

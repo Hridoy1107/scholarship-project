@@ -123,7 +123,7 @@ const UsersPage = () => {
                 <table className="table table-zebra w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Serial</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>

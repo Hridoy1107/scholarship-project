@@ -1,19 +1,19 @@
 import { useContext } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import DashNav from "./DashNav";
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import UserDashNav from "./UserDashNav";
+import AdminDashNav from "./AdminDashNav";
 
 const Dashboard = () => {
 
     const { user } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
     const { data: users = [] } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['user', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/users?email=${user?.email}`);
             return res.data;
@@ -30,22 +30,22 @@ const Dashboard = () => {
                     </h1>
                 </div>
             </>
-            <div className="my-8">
+            <div className="mb-4">
                 <div>
                     {
-                        users.map((user2) => (
-                            <div key={user2._id}>
-                                {user2.role === 'admin' ?
-                                    <><DashNav></DashNav></> :
-                                    user2.role === 'moderator' ?
-                                        <><DashNav></DashNav></> :
+                        users.map((user) => (
+                            <div key={user._id}>
+                                {user.role === 'admin' ?
+                                    <><AdminDashNav></AdminDashNav></> :
+                                    user.role === 'moderator' ?
+                                        <><AdminDashNav></AdminDashNav></> :
                                         <><UserDashNav></UserDashNav></>}
                             </div>
                         ))
                     }
                 </div>
-                <Outlet></Outlet>
             </div>
+            <Outlet></Outlet>
             <Footer></Footer>
         </>
     );
