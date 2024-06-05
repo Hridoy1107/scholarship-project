@@ -75,7 +75,7 @@ const CheckForm = () => {
             if (paymentIntent.status === 'succeeded') {
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Payment Successful',
+                    text: `Payment of $${totalFees} is Successful`,
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 });

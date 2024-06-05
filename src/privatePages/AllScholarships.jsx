@@ -81,7 +81,7 @@ const AllScholarships = () => {
                         «
                     </button>
                     {[...Array(totalPages).keys()].map((page) => (
-                        <button key={page + 1} className={`join-item btn bg-neutral-100 hover:bg-neutral-100 text-black ${currentPage === page + 1 ? 'btn-active bg-emerald-500 hover:bg-emerald-400' : ''}`} onClick={() => handlePageChange(page + 1)}>
+                        <button key={page + 1} className={`join-item btn bg-neutral-100 hover:bg-neutral-100 text-black ${currentPage === page + 1 ? 'btn-active bg-green-500 hover:bg-green-400' : ''}`} onClick={() => handlePageChange(page + 1)}>
                             {page + 1}
                         </button>
                     ))}
