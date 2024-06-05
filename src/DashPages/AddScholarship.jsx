@@ -61,7 +61,6 @@ const AddScholarship = () => {
         
         const newScholarships = { scholarshipName, universityName,  country, city, photoURL, rank, subjectCategory, scholarshipCategory, degreeCategory, tuitionFees, applicationFees, serviceCharges, deadlineDate, postDate, userName, email, description }
 
-        console.log(newScholarships);
 
         axiosPublic.post('/scholarships', newScholarships)
         .then(data => {

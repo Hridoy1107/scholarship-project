@@ -83,7 +83,10 @@ const DashAllScholarships = () => {
                                             <h1 className="block text-sm font-medium text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600">Category: {scholarship.scholarshipCategory}</h1>
                                             <h1 className="block text-sm font-medium text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600">Subject: {scholarship.subjectCategory}</h1>
                                         </div>
-                                        <div className="mt-4">
+                                        <div className="mt-1">
+                                        <Link to={`/details/${scholarship._id}`}className="bg-green-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-green-600 active:scale-95">Details</Link>
+                                        </div>
+                                        <div className="mt-1">
                                             <div className="lg:flex lg:justify-around">
                                                 <Link to={`edit-scholarships/${scholarship._id}`}className="bg-yellow-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-yellow-600 active:scale-95">Edit</Link>
                                                 <a onClick={() => handleDelete(scholarship)} className="bg-red-500 text-white font-medium py-2 px-4 w-[160px] mt-2 btn rounded transition-all hover:bg-red-600 active:scale-95">Delete</a>
