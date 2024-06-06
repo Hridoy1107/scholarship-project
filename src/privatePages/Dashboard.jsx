@@ -7,6 +7,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import UserDashNav from "./UserDashNav";
 import AdminDashNav from "./AdminDashNav";
+import ModDashNav from "./ModDashNav";
 
 const Dashboard = () => {
 
@@ -38,7 +39,7 @@ const Dashboard = () => {
                                 {user.role === 'admin' ?
                                     <><AdminDashNav></AdminDashNav></> :
                                     user.role === 'moderator' ?
-                                        <><AdminDashNav></AdminDashNav></> :
+                                        <><ModDashNav></ModDashNav></> :
                                         <><UserDashNav></UserDashNav></>}
                             </div>
                         ))

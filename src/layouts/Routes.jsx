@@ -17,6 +17,7 @@ import ApplyPage from "../privatePages/ApplyPage";
 import Payment from "../payment/Payment";
 import MyApplications from "../DashPages/MyApplications";
 import EditApplication from "../DashPages/EditApplication";
+import AllApplications from "../DashPages/AllApplications";
 
 const Routes = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ const Routes = createBrowserRouter([
                 path: 'all-scholarships/edit-scholarships/:id',
                 element: <EditScholarships></EditScholarships> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+            },
+            {
+                path: 'all-applications',
+                element: <AllApplications></AllApplications> ,
             },
 
             {
