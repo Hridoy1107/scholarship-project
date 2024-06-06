@@ -10,7 +10,7 @@ const MyApplications = () => {
 
     const { user } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
-    const { data: applications = [], isLoading } = useQuery({
+    const { data: applications = [], refetch, isLoading } = useQuery({
         queryKey: ['applications', user.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/applications?email=${user.email}`);
@@ -30,10 +30,35 @@ const MyApplications = () => {
                 confirmButtonText: 'Okay'
             });
         } else {
-            window.location.href = `edit/${application.scholarshipId}`;
+            window.location.href = `my-applications/edit-application/${application._id}`;
         }
     };
 
+    const handleCancel = application => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/applications/${application._id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Application has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+            }
+        })
+    }
 
     if (isLoading) {
         return (
