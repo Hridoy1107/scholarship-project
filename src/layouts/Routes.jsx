@@ -15,6 +15,7 @@ import AllScholarships from "../privatePages/AllScholarships";
 import Details from "../privatePages/Details";
 import ApplyPage from "../privatePages/ApplyPage";
 import Payment from "../payment/Payment";
+import MyApplications from "../DashPages/MyApplications";
 
 const Routes = createBrowserRouter([
     {
@@ -65,12 +66,12 @@ const Routes = createBrowserRouter([
                 element: <Profile></Profile> ,
             },
             {
-                path: 'add-scholarship',
-                element: <AddScholarship></AddScholarship> ,
+                path: 'my-applications',
+                element: <MyApplications></MyApplications> ,
             },
             {
-                path: 'users',
-                element: <UsersPage></UsersPage> ,
+                path: 'add-scholarship',
+                element: <AddScholarship></AddScholarship> ,
             },
             {
                 path: 'all-scholarships',
@@ -80,6 +81,10 @@ const Routes = createBrowserRouter([
                 path: 'all-scholarships/edit-scholarships/:id',
                 element: <EditScholarships></EditScholarships> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+            },
+            {
+                path: 'users',
+                element: <UsersPage></UsersPage> ,
             },
         ]
     }

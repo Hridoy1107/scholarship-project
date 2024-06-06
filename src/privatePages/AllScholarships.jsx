@@ -77,15 +77,15 @@ const AllScholarships = () => {
             </div>
             <div className="my-4">
                 <div className="join">
-                    <button className="join-item btn bg-neutral-100 hover:bg-neutral-100" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                    <button className="join-item btn border-white" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                         «
                     </button>
                     {[...Array(totalPages).keys()].map((page) => (
-                        <button key={page + 1} className={`join-item btn bg-neutral-100 hover:bg-neutral-100 text-black ${currentPage === page + 1 ? 'btn-active bg-green-500 hover:bg-green-400' : ''}`} onClick={() => handlePageChange(page + 1)}>
+                        <button key={page + 1} className={`join-item btn border-white ${currentPage === page + 1 ? 'btn-info' : ''}`} onClick={() => handlePageChange(page + 1)}>
                             {page + 1}
                         </button>
                     ))}
-                    <button className="join-item btn hover:bg-neutral-100 bg-neutral-100" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                    <button className="join-item btn border-white" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                         »
                     </button>
                 </div>
