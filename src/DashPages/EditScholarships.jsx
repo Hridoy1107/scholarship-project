@@ -75,6 +75,7 @@ const EditScholarships = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    form.reset();
                 }
             })
     }

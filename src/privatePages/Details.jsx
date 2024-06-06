@@ -2,6 +2,10 @@ import { animate, useMotionTemplate, motion, useMotionValue } from "framer-motio
 import { useEffect } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { Link, useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import { Rating, ThinStar } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 
 const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 
@@ -26,6 +30,27 @@ const Details = () => {
     const border = useMotionTemplate`1px solid ${color}`;
     const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
+    const axiosPublic = useAxiosPublic();
+    const { data: reviews = [], isLoading } = useQuery({
+        queryKey: ['reviews', _id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/reviews/${_id}`);
+            return res.data;
+        }
+    })
+
+    const myStyles = {
+        itemShapes: ThinStar,
+        activeFillColor: '#ffb700',
+        inactiveFillColor: '#fbf1a9'
+      }
+
+    if (isLoading) {
+        return (
+            <div className="my-4"><span className="loading loading-spinner loading-lg"></span></div>
+        );
+    }
+
     return (
         <>
             <div className="mt-5 lg:mx-40">
@@ -43,7 +68,7 @@ const Details = () => {
                             {universityName}
                         </h1>
                         <h1 className="max-w-3xl bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-2xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-2xl md:leading-tight">
-                        Location: {city}, {country}
+                            Location: {city}, {country}
                         </h1>
                     </div>
                     <div className="mt-2 justify-between">
@@ -77,7 +102,7 @@ const Details = () => {
                         </h1>
                     </div>
                     <div>
-                    <p className=" max-w-xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
+                        <p className=" max-w-xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
                             {description}
                         </p>
                     </div>
@@ -104,7 +129,35 @@ const Details = () => {
                 </motion.section>
             </div>
             <div>
-                <h1>Reviews</h1>
+                <h1 className="mt-2 font-semibold text-xl lg:text-3xl">Reviews</h1>
+                <>
+                    <div className="grid my-6 lg:grid-cols-3 gap-4">
+                        {
+                            reviews.map((review) => (
+                                <div key={review._id}>
+                                    <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                                        <div className="flex justify-center items-center mt-2 h-[212px]">
+                                            <img className="object-cover h-[212px]" src={review.photoURL} />
+                                        </div>
+                                        <div className="p-6">
+                                            <div className="lg:px-28 px-16">
+                                            <Rating
+                                                style={{ maxWidth: 180 }}
+                                                value={review.rating}
+                                                readOnly itemStyles={myStyles}
+                                            />
+                                            </div>
+                                            <div className="lg:h-[60px] h-[52px]">
+                                                <h1 className="block mt-1 lg:text-xl text-sm font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 px-2">Review given by: {review.userName}</h1>
+                                                <h1 className="mx-4 lg:text-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-gray-600 mt-1">Comment: {review.comment}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </>
             </div>
         </>
     );

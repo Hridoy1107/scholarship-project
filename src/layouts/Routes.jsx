@@ -18,6 +18,8 @@ import Payment from "../payment/Payment";
 import MyApplications from "../DashPages/MyApplications";
 import EditApplication from "../DashPages/EditApplication";
 import AllApplications from "../DashPages/AllApplications";
+import AdminAllApplications from "../DashPages/AdminAllApplications";
+import MyReviews from "../DashPages/MyReviews";
 
 const Routes = createBrowserRouter([
     {
@@ -76,6 +78,10 @@ const Routes = createBrowserRouter([
                 element: <EditApplication></EditApplication> ,
                 loader: ({params}) => fetch(`http://localhost:5000/applications/${params.id}`)
             },
+            {
+                path: 'my-reviews',
+                element: <MyReviews></MyReviews> ,
+            },
 
             {
                 path: 'add-scholarship',
@@ -98,6 +104,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'users',
                 element: <UsersPage></UsersPage> ,
+            },
+            {
+                path: 'admin-all-applications',
+                element: <AdminAllApplications></AdminAllApplications> ,
             },
         ]
     }

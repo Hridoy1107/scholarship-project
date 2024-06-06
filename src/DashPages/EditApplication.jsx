@@ -67,6 +67,7 @@ const EditApplication = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    form.reset();
                 }
             })
     }

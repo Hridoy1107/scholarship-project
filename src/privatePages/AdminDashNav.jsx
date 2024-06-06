@@ -34,7 +34,7 @@ const AdminDashNav = () => {
                 };
             }}
             className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200"> All Applications</NavLink>
-            <NavLink to="all-scholarships"
+            <NavLink to="admin-all-scholarships"
             style={({ isActive }) => {
                 return {
                     background: isActive ? "teal" : "white",
