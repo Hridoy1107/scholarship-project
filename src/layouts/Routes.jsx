@@ -20,6 +20,9 @@ import EditApplication from "../DashPages/EditApplication";
 import AllApplications from "../DashPages/AllApplications";
 import AdminAllApplications from "../DashPages/AdminAllApplications";
 import MyReviews from "../DashPages/MyReviews";
+import ModminRoute from "./ModminRoute";
+import AdminRoute from "./AdminRoute";
+import AllReviews from "../DashPages/AllReviews";
 
 const Routes = createBrowserRouter([
     {
@@ -85,29 +88,33 @@ const Routes = createBrowserRouter([
 
             {
                 path: 'add-scholarship',
-                element: <AddScholarship></AddScholarship> ,
+                element: <ModminRoute><AddScholarship></AddScholarship></ModminRoute> ,
             },
             {
                 path: 'all-scholarships',
-                element: <DashAllScholarships></DashAllScholarships> ,
+                element: <ModminRoute><DashAllScholarships></DashAllScholarships></ModminRoute> ,
             },
             {
                 path: 'all-scholarships/edit-scholarships/:id',
-                element: <EditScholarships></EditScholarships> ,
+                element: <ModminRoute><EditScholarships></EditScholarships></ModminRoute> ,
                 loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
             },
             {
                 path: 'all-applications',
-                element: <AllApplications></AllApplications> ,
+                element: <ModminRoute><AllApplications></AllApplications></ModminRoute> ,
+            },
+            {
+                path: 'all-reviews',
+                element: <ModminRoute><AllReviews></AllReviews></ModminRoute> ,
             },
 
             {
                 path: 'users',
-                element: <UsersPage></UsersPage> ,
+                element: <AdminRoute><UsersPage></UsersPage></AdminRoute> ,
             },
             {
                 path: 'admin-all-applications',
-                element: <AdminAllApplications></AdminAllApplications> ,
+                element: <AdminRoute><AdminAllApplications></AdminAllApplications></AdminRoute> ,
             },
         ]
     }

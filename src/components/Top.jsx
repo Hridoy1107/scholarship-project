@@ -1,17 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
-
-const AllScholarships = () => {
-
+const Top = () => {
     const axiosPublic = useAxiosPublic();
-    const [searchTerm, setSearchTerm] = useState('');
     const { data: scholarships = [], isLoading } = useQuery({
         queryKey: ['scholarships'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/scholarships?searchTerm=${searchTerm}`);
+            const res = await axiosPublic.get('/scholarships?top=true');
             return res.data;
         }
     })
@@ -30,17 +27,6 @@ const AllScholarships = () => {
         setCurrentPage(pageNumber);
     };
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const searchValue = formData.get('search');
-        setSearchTerm(searchValue);
-    };
-
-    const handleReset = () => {
-        setSearchTerm('');
-    };
-
     if (isLoading) {
         return (
             <div className="my-4"><span className="loading loading-spinner loading-lg"></span></div>
@@ -49,20 +35,16 @@ const AllScholarships = () => {
 
     return (
         <>
-        <h1 className="mt-2 font-semibold text-xl lg:text-3xl">All scholarship options we have for you</h1>
-        <div className="my-4 lg:px-20">
-                <form onSubmit={handleSearch}>
-                    <label className="lg:mx-80 mx-4 input input-bordered flex items-center gap-2">
-                        <input type="text" className="grow"
-                        name="search" placeholder="Search your university/scholarship/degree" />
-                    </label>
-                    <input type="submit" className="btn my-2 btn-info h-12 w-28" value="Search"/>
-                </form>
-                <div className="mb-2">
-                <button onClick={handleReset} className="btn btn-warning h-12 w-28">Reset</button>
-                </div>
-            </div>
-            <div className="grid my-6 lg:grid-cols-3 gap-4">
+        <div>
+            <h3 className="text-4xl md:text-5xl text-emerald-500 font-semibold">
+            Top Scholarships
+            </h3>
+            <p className="text-base font-medium lg::text-lg my-4 lg:px-20 lg:my-6">
+            Explore our comprehensive and meticulously curated list of top scholarships, complete with detailed eligibility criteria, insider application tips, and critical deadlines to ensure you maximize your chances of success and secure the funding you need.
+        </p>
+        </div>
+        <div>
+        <div className="grid my-6 lg:grid-cols-3 gap-4">
                 {
                     currentItems.map((scholarship) => (
                             <div key={scholarship._id}>
@@ -115,8 +97,9 @@ const AllScholarships = () => {
                     </button>
                 </div>
             </div>
+        </div>
         </>
     );
 };
 
-export default AllScholarships;
+export default Top;

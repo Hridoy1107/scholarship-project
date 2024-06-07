@@ -1,5 +1,5 @@
 import { animate, useMotionTemplate, motion, useMotionValue } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -12,7 +12,7 @@ const COLORS_TOP = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
 const Details = () => {
 
     const scholarships = useLoaderData();
-    const { _id, scholarshipName, universityName, country, city, photoURL, subjectCategory, scholarshipCategory, degreeCategory, applicationFees, serviceCharges, deadlineDate, postDate, description } = scholarships
+    const { _id, scholarshipName, universityName, country, city, photoURL, subjectCategory, scholarshipCategory, degreeCategory, applicationFees, rank, serviceCharges, deadlineDate, postDate, description } = scholarships
 
 
     const color = useMotionValue(COLORS_TOP[0]);
@@ -45,6 +45,20 @@ const Details = () => {
         inactiveFillColor: '#fbf1a9'
       }
 
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 3;
+  
+      const totalPages = Math.ceil(reviews.length / itemsPerPage);
+  
+      const currentItems = reviews.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+      );
+  
+      const handlePageChange = (pageNumber) => {
+          setCurrentPage(pageNumber);
+      };
+
     if (isLoading) {
         return (
             <div className="my-4"><span className="loading loading-spinner loading-lg"></span></div>
@@ -72,7 +86,9 @@ const Details = () => {
                         </h1>
                     </div>
                     <div className="mt-2 justify-between">
-                        <h1 className=" bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-xl font-medium leading-tight text-transparent md:text-xl md:leading-tight">Category: {scholarshipCategory}
+                    <h1 className=" bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-xl font-medium leading-tight text-transparent md:text-xl md:leading-tight">University Rank: {rank}
+                    </h1>
+                        <h1 className=" bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-xl font-medium leading-tight text-transparent md:text-xl md:leading-tight mt-1">Category: {scholarshipCategory}
                         </h1>
                         <h1 className=" bg-gradient-to-br from-white to-gray-400 bg-clip-text text-center text-xl font-medium leading-tight text-transparent md:text-xl md:leading-tight mt-2">Scholarship Name: {scholarshipName}
                         </h1>
@@ -129,11 +145,11 @@ const Details = () => {
                 </motion.section>
             </div>
             <div>
-                <h1 className="mt-2 font-semibold text-xl lg:text-3xl">Reviews</h1>
+                <h1 className="mt-4 font-semibold text-xl lg:text-3xl">Reviews</h1>
                 <>
                     <div className="grid my-6 lg:grid-cols-3 gap-4">
                         {
-                            reviews.map((review) => (
+                            currentItems.map((review) => (
                                 <div key={review._id}>
                                     <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                                         <div className="flex justify-center items-center mt-2 h-[212px]">
@@ -157,6 +173,21 @@ const Details = () => {
                             ))
                         }
                     </div>
+                    <div className="my-4">
+                <div className="join">
+                    <button className="join-item btn border-white" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        «
+                    </button>
+                    {[...Array(totalPages).keys()].map((page) => (
+                        <button key={page + 1} className={`join-item btn border-white ${currentPage === page + 1 ? 'btn-info' : ''}`} onClick={() => handlePageChange(page + 1)}>
+                            {page + 1}
+                        </button>
+                    ))}
+                    <button className="join-item btn border-white" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        »
+                    </button>
+                </div>
+            </div>
                 </>
             </div>
         </>

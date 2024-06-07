@@ -2,128 +2,138 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import { FreeMode, Autoplay } from 'swiper/modules';
-import bg1 from '../assets/du.webp';
-import bg2 from '../assets/RU.webp';
-import bg3 from '../assets/agre.jpg';
+import bg1 from '../assets/2011828.jpg';
+import bg2 from '../assets/36-beautiful-college-campuses.jpg';
+import bg3 from '../assets/64aa0f7948f6f0fdea44af9b4b761e37.jpg';
+import bg4 from '../assets/OIP.jpg';
+import bg5 from '../assets/R.jpg';
 import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
         <>
-            <div className="my-8">
-                <div>
-                    <Swiper
-                        slidesPerView={1}
-                        loop={true}
-                        freeMode={true}
-                        spaceBetween={30}
-                        centeredSlides={true}
-                        autoplay={{
-                            delay: 2000,
-                            disableOnInteraction: false,
-                        }}
-                        parallax={true}
-                        modules={[FreeMode, Autoplay]}>
-                        <SwiperSlide>
-                            <div
-                                style={{
-                                    backgroundImage: `url(${bg1})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    width: '100%',
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    zIndex: -1,
-                                }}
-                                data-swiper-parallax="-23%"
-                            ></div>
-                            <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
+            <div className="mt-8">
+                <div className="lg:flex">
+                    <div className="lg:w-[688px]">
+                        <Swiper
+                            slidesPerView={1}
+                            loop={true}
+                            freeMode={true}
+                            spaceBetween={30}
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 2000,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[FreeMode, Autoplay]}
+                        >
+                            <SwiperSlide><img className="lg:w-[688px] w-full lg:h-[316px] h-[204px] rounded-2xl" src={bg1} /></SwiperSlide>
+                            <SwiperSlide><img className="lg:w-[688px] w-full lg:h-[316px] h-[204px] rounded-2xl" src={bg2} /></SwiperSlide>
+                            <SwiperSlide><img className="lg:w-[688px] w-full lg:h-[316px] h-[204px] rounded-2xl" src={bg3} /></SwiperSlide>
+                            <SwiperSlide><img className="lg:w-[688px] w-full lg:h-[316px] h-[204px] rounded-2xl" src={bg4} /></SwiperSlide>
+                            <SwiperSlide><img className="lg:w-[688px] w-full lg:h-[316px] h-[204px] rounded-2xl" src={bg5} /></SwiperSlide>
+                        </Swiper>
+                    </div>
+                    <div className="lg:w-[680px] lg:ml-2 lg:mt-0 mt-4">
+                        <Swiper
+                            slidesPerView={1}
+                            loop={true}
+                            freeMode={true}
+                            spaceBetween={30}
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 2000,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[FreeMode, Autoplay]}
+                        >
+                            <SwiperSlide>
+                                <div className="lg:py-20 ">
                                     <div>
-                                        <h1 className="text-black font-medium lg:text-4xl text-2xl">Achieve Your Dreams</h1>
+                                        <h1 className="font-medium lg:text-4xl text-2xl">Achieve Your Dreams</h1>
                                     </div>
                                     <div>
-                                        <h1 className="mt-2 text-black text-xl">
+                                        <h1 className="mt-2 text-xl">
                                             Get recommendations based on your profile and preferences for a more targeted search experience.
                                         </h1>
                                     </div>
                                     <div>
-                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all-scholarships" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div
-                                style={{
-                                    backgroundImage: `url(${bg2})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    width: '100%',
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    zIndex: -1,
-                                }}
-                                data-swiper-parallax="-23%"
-                            ></div>
-                            <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="lg:py-20 ">
                                     <div>
-                                        <h1 className="text-black font-medium lg:text-4xl text-2xl">Unlock Your Potential</h1>
+                                        <h1 className="font-medium lg:text-4xl text-2xl">Unlock Your Potential</h1>
                                     </div>
                                     <div>
-                                        <h1 className="mt-2 text-black text-xl">
+                                        <h1 className="mt-2 text-xl">
                                             Discover a variety of scholarships that match your academic interests, background, and financial needs.
                                         </h1>
                                     </div>
                                     <div>
-                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all-scholarships" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div
-                                style={{
-                                    backgroundImage: `url(${bg3})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    width: '100%',
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    zIndex: -1,
-                                }}
-                                data-swiper-parallax="-23%"
-                            ></div>
-                            <div className="lg:h-[400px] h-[282px]">
-                                <div className="bg-slate-100/50 lg:h-[200px] h-[282px] lg:mx-52 px-10 pt-2">
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="lg:py-20 ">
                                     <div>
-                                        <h1 className="text-black font-medium lg:text-4xl text-2xl">Invest in Your Future</h1>
+                                        <h1 className=" font-medium lg:text-4xl text-2xl">Invest in Your Future</h1>
                                     </div>
                                     <div>
-                                        <h1 className="mt-2 text-black text-xl">
+                                        <h1 className="mt-2 text-xl">
                                             Explore numerous scholarship opportunities to help you finance your college or university education.
                                         </h1>
                                     </div>
                                     <div>
-                                        <Link to="/all" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                        <Link to="/all-scholarships" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
                                             Apply Now
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    </Swiper>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="lg:py-20 ">
+                                    <div>
+                                        <h1 className="font-medium lg:text-4xl text-2xl">Secure Your Education with Scholarships</h1>
+                                    </div>
+                                    <div>
+                                        <h1 className="mt-2 text-xl">
+                                            Access exclusive resources and expert guidance to optimize your scholarship applications and funding opportunities.
+                                        </h1>
+                                    </div>
+                                    <div>
+                                        <Link to="/all-scholarships" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                            Apply Now
+                                        </Link>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="lg:py-20 ">
+                                    <div>
+                                        <h1 className="font-medium lg:text-4xl text-2xl">Empower Your Future with Financial Aid</h1>
+                                    </div>
+                                    <div>
+                                        <h1 className="mt-2 text-xl">
+                                            Navigate through a variety of scholarships and grants designed to make your college journey affordable and attainable.
+                                        </h1>
+                                    </div>
+                                    <div>
+                                        <Link to="/all-scholarships" className="inline-flex items-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700 my-5" role="button">
+                                            Apply Now
+                                        </Link>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
                 </div>
             </div>
         </>

@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Rating, ThinStar } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -99,6 +101,16 @@ const MyReviews = () => {
                 }
             })
     }
+    const handleDetails = (review) => {
+        setSelectedReview(review);
+        document.getElementById('my_modal_2').showModal();
+    };
+
+    const myStyles = {
+        itemShapes: ThinStar,
+        activeFillColor: '#ffb700',
+        inactiveFillColor: '#fbf1a9'
+      }
 
     if (isLoading) {
         return (
@@ -133,6 +145,7 @@ const MyReviews = () => {
                                     <td><span className="font-semibold">{review.comment}</span></td>
                                     <td>
                                         <div className="gap-x-4 flex ">
+                                        <button onClick={() => handleDetails(review)} className="btn btn-info">Details</button>
                                             <button onClick={() => handleEdit(review)} className="btn btn-warning">Edit</button>
                                             <button onClick={() => handleDelete(review)} className="btn btn-error">Delete</button>
                                         </div>
@@ -143,6 +156,8 @@ const MyReviews = () => {
                     </tbody>
                 </table>
             </div>
+
+            
 
             {selectedReview && (
                 <dialog id="my_modal_1" className="modal">
@@ -199,6 +214,30 @@ const MyReviews = () => {
                                 ></textarea>
                                 <input type="submit" value="Edit" className="btn btn-primary btn-block mt-4" />
                             </form>
+                        </div>
+                    </div>
+                </dialog>
+            )}
+
+{selectedReview && (
+                <dialog id="my_modal_2" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <h3 className="font-bold text-lg">Details</h3>
+                        <div>
+                            <img className="my-4 w-20 h-20 avatar" src={selectedReview.photoURL} />
+                            <div className="lg:px-36 px-20">
+                                            <Rating
+                                                style={{ maxWidth: 180 }}
+                                                value={selectedReview.rating}
+                                                readOnly itemStyles={myStyles}
+                                            />
+                                            </div>
+                            <p className="lg:text-xl"><strong>Reviewer:</strong> {selectedReview.userName}</p>
+                            <p className="lg:text-xl"><strong>Review date:</strong> {selectedReview.reviewDate}</p>
+                            <p className="lg:text-xl"><strong>University:</strong> {selectedReview.universityName}</p>
                         </div>
                     </div>
                 </dialog>

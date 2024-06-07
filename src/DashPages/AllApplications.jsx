@@ -137,10 +137,10 @@ const AllApplications = () => {
                                     <td><span className="font-semibold">{application.universityName}</span></td>
                                     <td><span className="font-semibold">{application.subjectCategory}</span></td>
                                     <td><span className="font-semibold">{application.degreeCategory}</span></td>
-                                    <td className="font-medium">{application?.feedback ? application.feedback : "No feedback given"}</td>
+                                    <td className="font-medium">{application?.feedback ? <><span className="text-emerald-500">{application.feedback}</span></> : <><h1 className="text-yellow-500">No feedback given</h1></>}</td>
                                     <td className="font-medium">
-                                        {application.status === 'processing' ? 'Processing' : application.status === 'completed' ? 'Completed' :
-                                            application.status === 'rejected' ? 'Rejected' : 'Pending'}
+                                        {application.status === 'processing' ? <><h1 className="text-blue-700">Processing</h1></> : application.status === 'completed' ? <><h1 className="text-green-500">Completed</h1></> :
+                                            application.status === 'rejected' ? <><h1 className="text-red-600">Rejected</h1></> : <><h1 className="text-yellow-400">Pending</h1></>}
                                     </td>
                                     <td>
                                         <div className="gap-x-4 flex ">

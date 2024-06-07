@@ -79,7 +79,12 @@ const CheckForm = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 });
-                navigate(`/apply-page/${_id}`)
+                axiosPublic.post('/payments', { price: totalFees , scholarshipsId: _id, email:user.email })
+                .then(data => { 
+                    if (data.data.insertedId){
+                        navigate(`/apply-page/${_id}`)
+                    }
+                 })
             }
         }
 
