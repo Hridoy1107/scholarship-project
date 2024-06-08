@@ -23,6 +23,7 @@ import MyReviews from "../DashPages/MyReviews";
 import ModminRoute from "./ModminRoute";
 import AdminRoute from "./AdminRoute";
 import AllReviews from "../DashPages/AllReviews";
+import Charts from "../DashPages/Charts";
 
 const Routes = createBrowserRouter([
     {
@@ -41,17 +42,17 @@ const Routes = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+                loader: ({params}) => fetch(`https://scholarship-server.vercel.app/scholarships/${params.id}`)
             },
             {
                 path: '/apply-page/:id',
                 element: <PrivateRoute><ApplyPage></ApplyPage></PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+                loader: ({params}) => fetch(`https://scholarship-server.vercel.app/scholarships/${params.id}`)
             },
             {
                 path: '/payment/:id',
                 element: <PrivateRoute><Payment></Payment> </PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+                loader: ({params}) => fetch(`https://scholarship-server.vercel.app/scholarships/${params.id}`)
             },
             {
                 path: '/login',
@@ -79,7 +80,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'my-applications/edit-application/:id',
                 element: <EditApplication></EditApplication> ,
-                loader: ({params}) => fetch(`http://localhost:5000/applications/${params.id}`)
+                loader: ({params}) => fetch(`https://scholarship-server.vercel.app/applications/${params.id}`)
             },
             {
                 path: 'my-reviews',
@@ -97,7 +98,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'all-scholarships/edit-scholarships/:id',
                 element: <ModminRoute><EditScholarships></EditScholarships></ModminRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/scholarships/${params.id}`)
+                loader: ({params}) => fetch(`https://scholarship-server.vercel.app/scholarships/${params.id}`)
             },
             {
                 path: 'all-applications',
@@ -115,6 +116,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'admin-all-applications',
                 element: <AdminRoute><AdminAllApplications></AdminAllApplications></AdminRoute> ,
+            },
+            {
+                path: 'charts',
+                element: <AdminRoute><Charts></Charts></AdminRoute> ,
             },
         ]
     }

@@ -2,7 +2,7 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'https://scholarship-server.vercel.app/'
 })
 
 const useAxiosPublic = () => {
