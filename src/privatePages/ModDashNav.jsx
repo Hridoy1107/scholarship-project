@@ -24,7 +24,7 @@ const ModDashNav = () => {
                 };
             }}
             className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 rounded-xl border-black transition-all duration-200">Add Scholarship</NavLink>
-        <NavLink to="all-applications"
+        <NavLink to="mod-all-applications"
             style={({ isActive }) => {
                 return {
                     background: isActive ? "teal" : "white",

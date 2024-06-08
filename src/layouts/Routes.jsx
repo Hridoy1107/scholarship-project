@@ -24,6 +24,7 @@ import ModminRoute from "./ModminRoute";
 import AdminRoute from "./AdminRoute";
 import AllReviews from "../DashPages/AllReviews";
 import Charts from "../DashPages/Charts";
+import ModRoute from "./ModRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -101,8 +102,8 @@ const Routes = createBrowserRouter([
                 loader: ({params}) => fetch(`https://scholarship-server.vercel.app/scholarships/${params.id}`)
             },
             {
-                path: 'all-applications',
-                element: <ModminRoute><AllApplications></AllApplications></ModminRoute> ,
+                path: 'mod-all-applications',
+                element: <ModRoute><AllApplications></AllApplications></ModRoute> ,
             },
             {
                 path: 'all-reviews',
