@@ -3,8 +3,11 @@
 Live link: https://uni-aid.netlify.app/
 
 Admin: admin@mail.com
+
 Moderator: moderator@mail.com
+
 User: user@mail.com
+
 password: 1Qwerty
 
 Responsive Design: The website is designed to be fully responsive, ensuring seamless access and optimal viewing experiences on both PC and mobile devices.
