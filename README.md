@@ -4,7 +4,7 @@ Live link: https://uni-aid.netlify.app/
 
 Admin: admin@mail.com
 
-Moderator: moderator@mail.com
+Moderator: moderator@gmail.com
 
 User: user@mail.com
 
