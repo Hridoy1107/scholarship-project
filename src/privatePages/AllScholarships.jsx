@@ -1,18 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Rating, ThinStar } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
+import debounce from 'lodash.debounce'; 
 
 const AllScholarships = () => {
 
     const axiosPublic = useAxiosPublic();
     const [searchTerm, setSearchTerm] = useState('');
+    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedSetSearchTerm = useCallback(
+        debounce((value) => setDebouncedSearchTerm(value), 250), 
+        []
+    );
+
+    useEffect(() => {
+        debouncedSetSearchTerm(searchTerm);
+    }, [searchTerm, debouncedSetSearchTerm]);
+
     const { data: scholarships = [], isLoading } = useQuery({
-        queryKey: ['scholarships'],
+        queryKey: ['scholarships', debouncedSearchTerm],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/scholarships?searchTerm=${searchTerm}`);
+            const res = await axiosPublic.get(`/scholarships?searchTerm=${debouncedSearchTerm}`);
             return res.data;
         }
     })
@@ -85,6 +98,7 @@ const AllScholarships = () => {
         setSearchTerm('');
         setSortBy(null);
         setCurrentPage(1);
+        document.querySelector('input[name="search"]').value = '';
     };
 
     const myStyles = {
@@ -121,7 +135,7 @@ const AllScholarships = () => {
                 <form onSubmit={handleSearch}>
                     <label className="lg:mx-80 mx-4 input input-bordered flex items-center gap-2">
                         <input type="text" className="grow"
-                            name="search" placeholder="Search your university/scholarship/degree" />
+                            name="search" defaultValue={debouncedSearchTerm} placeholder="Search your university/scholarship/degree" />
                     </label>
                     <input type="submit" className="btn my-2 btn-info h-12 w-28" value="Search" />
                 </form>
